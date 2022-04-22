@@ -3,9 +3,40 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
-  ]
+//解决vue路由重复导航错误
+//获取原型对象上的push函数
+const originalPush = Router.prototype.push
+//修改原型对象中的push方法
+Router.prototype.push = function push(location) {
+   return originalPush.call(this, location).catch(err => err)
+}
+const Home = () => import("views/home/Home.vue")
+const Category = () => import("views/category/Category.vue")
+const Cart = () => import("views/cart/Cart.vue")
+const Profile = () => import("views/profile/Profile.vue")
+
+const routes = [
+  {
+      path:"/",
+      component:Home
+  },{
+      path:"/home",
+      component:Home
+  },{
+      path:"/category",
+      component:Category
+  },{
+      path:"/shopcart",
+      component:Cart
+  },{
+      path:"/profile",
+      component:Profile
+  },
+]
+
+const router = new Router({
+  mode:"history",
+  routes
 })
+
+export default router
