@@ -4,6 +4,109 @@
     <home-swiper :banners="banners"></home-swiper>
     <Recommend :recommends="recommends"></Recommend>
     <feature></feature>
+    <tab-control :titles="titles" class="tab-contr"></tab-control>
+    <ul>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+      <li>nihoa</li>
+    </ul>
   </div>
 </template>
 
@@ -12,6 +115,9 @@
   import HomeSwiper from './homeComp/HomeSwiper.vue'
   import Recommend from './homeComp/Recommend.vue'
   import Feature from './homeComp/Feature.vue'
+
+  import TabControl from 'components/content/tabControl/TabControl.vue';
+
   import {getHomeMultidata} from 'network/home'
 
   export default {
@@ -20,6 +126,7 @@
       return {
         banners:[],
         recommends:[],
+        titles:['流行','新款','精选'],
       };
     },
     components: {
@@ -27,6 +134,7 @@
       HomeSwiper,
       Recommend,
       Feature,
+      TabControl,
     },
     created(){
       getHomeMultidata().then(res => {
@@ -50,5 +158,9 @@
   top: 0;
   left: 0;
   right: 0;
+}
+.tab-contr{
+  position: sticky;
+  top: 44px;
 }
 </style>
