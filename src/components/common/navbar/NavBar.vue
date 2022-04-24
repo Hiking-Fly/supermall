@@ -9,9 +9,6 @@
 <script>
 export default {
   name:'NavBar',
-  props:{
-      bgcolor:String,
-  },
   data () {
     return {
     };
@@ -20,7 +17,6 @@ export default {
   computed:{
       bgcolorCom(){
           return {
-              'background-color':this.bgcolor
           }
       }
   },
@@ -31,13 +27,12 @@ export default {
 <style scoped>
 .nav-bar{
     display: flex;
-    height: 44px;
-    
+    height: 44px;  
+    line-height: 44px;
 }
 .center{
     flex:1;
-    text-align: center;
-    line-height: 44px;
+    text-align: center; 
 }
 .right,.left{
     width: 60px;
