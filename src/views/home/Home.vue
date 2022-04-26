@@ -4,7 +4,7 @@
     <home-swiper :banners="banners"></home-swiper>
     <Recommend :recommends="recommends"></Recommend>
     <feature></feature>
-    <tab-control :titles="titles" class="tab-contr"></tab-control>
+    <tab-control :titles="titles" class="tab-contr" @tabClick="tabClick"></tab-control>
     <ul>
       <li>nihoa</li>
       <li>nihoa</li>
@@ -118,7 +118,7 @@
 
   import TabControl from 'components/content/tabControl/TabControl.vue';
 
-  import {getHomeMultidata} from 'network/home'
+  import {getHomeMultidata,getHomeGoods} from 'network/home'
 
   export default {
     name:"Home",
@@ -127,6 +127,12 @@
         banners:[],
         recommends:[],
         titles:['流行','新款','精选'],
+        goods:{
+          'pop':{page:0,list:[]},
+          'new':{page:0,list:[]},
+          'sell':{page:0,list:[]},
+        },
+        currentType: 'pop'
       };
     },
     components: {
@@ -137,13 +143,40 @@
       TabControl,
     },
     created(){
-      getHomeMultidata().then(res => {
-        console.log(res);
-        this.banners = res.data.banner.list
-        this.recommends = res.data.recommend.list
-      })
+      this.getHomeMultidata();
+      // this.getHomeGoods('pop');
     },
-    methods: {}
+    methods: {
+      getHomeMultidata(){
+         getHomeMultidata().then(res => {
+          // console.log(res);
+          this.banners = res.data.banner.list
+          this.recommends = res.data.recommend.list
+        })
+      },
+      getHomeGoods(type){
+        const page = this.goods[type].page+1
+        getHomeGoods(type,page).then(res => {
+          this.goods[type].list.push(...res.data.list)// 因为 接口过时，返回数据并没有list
+          console.log(this.goods[type].list)
+          this.goods[type].page+=1
+        })
+      },
+      tabClick(index){
+        switch (index){
+          case 0:
+            this.currentType = 'pop'
+            break
+          case 1:
+            this.currentType = 'new'
+            break
+          case 2:
+            this.currentType = 'sell'
+            break
+        }
+        console.log(this.currentType);
+      }
+    }
   }
 </script>
  
@@ -158,9 +191,11 @@
   top: 0;
   left: 0;
   right: 0;
+  z-index: 9;
 }
 .tab-contr{
   position: sticky;
   top: 44px;
+  z-index: 9;
 }
 </style>
