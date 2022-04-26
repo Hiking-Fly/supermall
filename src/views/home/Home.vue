@@ -3,110 +3,9 @@
     <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
     <home-swiper :banners="banners"></home-swiper>
     <Recommend :recommends="recommends"></Recommend>
-    <feature></feature>
+    <!-- 监听组件 .native -->
+    <feature @click.native="featureClick"></feature>
     <tab-control :titles="titles" class="tab-contr" @tabClick="tabClick"></tab-control>
-    <ul>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-      <li>nihoa</li>
-    </ul>
   </div>
 </template>
 
@@ -147,6 +46,9 @@
       // this.getHomeGoods('pop');
     },
     methods: {
+      featureClick(){
+        console.log('featureClick');
+      },
       getHomeMultidata(){
          getHomeMultidata().then(res => {
           // console.log(res);
