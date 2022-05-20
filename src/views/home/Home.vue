@@ -6,16 +6,18 @@
     <!-- 监听组件 .native -->
     <feature @click.native="featureClick"></feature>
     <tab-control :titles="titles" class="tab-contr" @tabClick="tabClick"></tab-control>
+    <good-list :goods="goods[currentType].list"></good-list>
   </div>
 </template>
 
 <script>
-  import NavBar from 'components/common/navbar/NavBar'
   import HomeSwiper from './homeComp/HomeSwiper.vue'
   import Recommend from './homeComp/Recommend.vue'
   import Feature from './homeComp/Feature.vue'
 
+  import NavBar from 'components/common/navbar/NavBar'
   import TabControl from 'components/content/tabControl/TabControl.vue';
+  import goodList from 'components/content/goods/goodList'
 
   import {getHomeMultidata,getHomeGoods} from 'network/home'
 
@@ -40,10 +42,13 @@
       Recommend,
       Feature,
       TabControl,
+      goodList,
     },
     created(){
       this.getHomeMultidata();
-      // this.getHomeGoods('pop');
+      this.getHomeGoods('pop');
+      this.getHomeGoods('new');
+      this.getHomeGoods('sell');
     },
     methods: {
       featureClick(){
@@ -51,7 +56,7 @@
       },
       getHomeMultidata(){
          getHomeMultidata().then(res => {
-          // console.log(res);
+          //console.log(res);
           this.banners = res.data.banner.list
           this.recommends = res.data.recommend.list
         })
@@ -59,6 +64,7 @@
       getHomeGoods(type){
         const page = this.goods[type].page+1
         getHomeGoods(type,page).then(res => {
+          // console.log(res)
           this.goods[type].list.push(...res.data.list)// 因为 接口过时，返回数据并没有list
           console.log(this.goods[type].list)
           this.goods[type].page+=1

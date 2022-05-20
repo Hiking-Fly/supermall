@@ -46,7 +46,7 @@ export default {
     }
     .active{
         color: var(--color-tint);
-        border-bottom: var(--color-tint) 1px solid;
+        border-bottom: var(--color-tint) 2px solid;
     }
 
 </style>
