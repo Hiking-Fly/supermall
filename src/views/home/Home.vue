@@ -1,12 +1,14 @@
 <template>
   <div id='home'>
     <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
-    <home-swiper :banners="banners"></home-swiper>
-    <Recommend :recommends="recommends"></Recommend>
-    <!-- 监听组件 .native -->
-    <feature @click.native="featureClick"></feature>
-    <tab-control :titles="titles" class="tab-contr" @tabClick="tabClick"></tab-control>
-    <good-list :goods="goods[currentType].list"></good-list>
+    <scroll class="content">
+      <home-swiper :banners="banners"></home-swiper>
+      <Recommend :recommends="recommends"></Recommend>
+      <!-- 监听组件 .native -->
+      <feature @click.native="featureClick"></feature>
+      <tab-control :titles="titles" class="tab-contr" @tabClick="tabClick"></tab-control>
+      <good-list :goods="goods[currentType].list"></good-list>
+    </scroll>
   </div>
 </template>
 
@@ -18,6 +20,7 @@
   import NavBar from 'components/common/navbar/NavBar'
   import TabControl from 'components/content/tabControl/TabControl.vue';
   import goodList from 'components/content/goods/goodList'
+  import Scroll from 'components/common/scroll/Scroll'
 
   import {getHomeMultidata,getHomeGoods} from 'network/home'
 
@@ -43,6 +46,7 @@
       Feature,
       TabControl,
       goodList,
+      Scroll,
     },
     created(){
       this.getHomeMultidata();
@@ -105,5 +109,9 @@
   position: sticky;
   top: 44px;
   z-index: 9;
+}
+.content{
+  height:400px;
+
 }
 </style>
